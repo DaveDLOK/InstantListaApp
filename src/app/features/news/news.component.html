@@ -1,0 +1,37 @@
+<div class="full-page">
+<h1>Welcome to InstantLista</h1>
+<p>In this application you will be able to create your own lists and share them with your network, it's pretty easy</p>
+<mat-accordion>
+    <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h3>How can I create my lists?</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>You can create QuickLists if you want to only add a simple list but this will only remind 24 hours, we will delete this list for you!</p>
+          <p>To create a QuickList just click in the left menu the option QuickList and then just add your name list, the elements and that's it!!</p>
+          <p>You can also keep your information more than 24 hours just creating a regular list by using the create option in the left menu</p>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>
+<h2>News</h2>
+<div *ngFor="let item of news"> 
+    <h4>{{item.title}}</h4>
+    <p>{{item.description}}</p>
+    <div *ngIf="item.image!=null">
+        <img class="google-play" src="{{item.image}}"/>
+    </div>
+    <div *ngIf="item.url!=null">
+        <a href="item.url">{{item.url}</a>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div>
+<p>InstantLista is a free app created by David Keller<br>
+Soon InstantLista available for:</p>
+<img class="google-play" src="../../../assets/images/appStore.png"/>
+<img class="app-store" src="../../../assets/images/googlePlay.jpg"/>
+<p>InstantLista v1.0.0</p>
+</div>
+</div>
+

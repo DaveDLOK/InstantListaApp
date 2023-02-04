@@ -1,0 +1,33 @@
+section {
+    display: table;
+  }
+  
+.search-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.full-page{
+  height: 89vh;
+  display: flex;
+}
+
+.search-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+}
+
+.search-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+  
+.search-full-width {
+  width: 100%;
+}
+
+.search-button-cointainer{
+  display:flex;
+}
+  
+  

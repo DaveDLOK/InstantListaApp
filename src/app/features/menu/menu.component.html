@@ -1,0 +1,34 @@
+
+<app-search-header></app-search-header>
+<mat-sidenav-container class="all-wrap">
+    <mat-sidenav #leftNavigator name="leftNav" opened mode="side">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['quickLists']">QuickLists</a>
+        <a mat-list-item [routerLink]="['news']">News</a>
+        <a mat-list-item [routerLink]="['myLists']">My Lists</a>
+        <a mat-list-item [routerLink]="['mainSearch']">Search</a>
+        <a mat-list-item [routerLink]="['mainCreate']">Create</a>
+        <a mat-list-item [routerLink]="['notifications']">Notifications</a>
+      </mat-nav-list>
+      <app-profile class="profile"></app-profile>
+    </mat-sidenav>
+    <mat-sidenav-content class="page-wrap">
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+        <div class="footer">
+          <mat-divider></mat-divider>
+          <p><a>terms of service</a> InstantLista 2021 all rights reserved</p>
+        </div>
+    </mat-sidenav-content>
+    <mat-sidenav  opened mode="side" position="end">
+      <mat-nav-list>
+        <div id="menu-search">
+
+        </div>
+        <app-user-feed></app-user-feed>
+        <mat-divider></mat-divider>
+        <app-following></app-following>
+      </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>

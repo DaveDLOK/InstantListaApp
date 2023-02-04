@@ -1,0 +1,55 @@
+<mat-drawer-container class="full-page">
+    <mat-drawer-content>
+        <form class="search-form"> 
+            <div class="search-button-cointainer">
+                <mat-form-field class="search-full-width">
+                    <mat-label>Search</mat-label>
+                    <input #inputSearch matInput placeholder="Ex. My little pony" [formControl]="myControl" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async as options" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button mat-icon-button color="primary" aria-hidden="false" aria-label="search icon" (click)="onSearchClick(inputSearch.value)">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div> 
+        </form>
+        <section>
+            <div class="search-button-row">
+                <button mat-raised-button [color]="element==selectedType?'accent':'primary'"
+                        *ngFor="let element of searchTypes" 
+                        (click)="onSelectSearchType(element)"  value="{{element}}">{{element}}</button>
+            </div>
+        </section>
+        <mat-divider></mat-divider>
+        <section>
+            <p *ngIf="noResults">No results found for {{searchString}}</p>
+            <mat-nav-list>
+                <div *ngFor="let item of dataSource"> 
+                    <div>{{ item.name }}</div>
+                    <div>{{ item.description }}</div>
+                    <div *ngIf="item.type!='user'">
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onAddClick(item)">
+                            <mat-icon>playlist_add</mat-icon>
+                        </button>
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onShareClick(item)">
+                            <mat-icon>share</mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="item.type=='user'">
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onfollowClick(item)">
+                            <mat-icon>person_add</mat-icon>
+                        </button>
+                    </div>
+                    <mat-divider></mat-divider>
+                </div>
+             </mat-nav-list>
+            <mat-paginator [length]="length" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = pageChanged($event)"></mat-paginator>
+        </section>
+    </mat-drawer-content>
+    <mat-drawer #rightSideNav mode="side" [opened]="rightNavOpen" position="end">
+        <router-outlet></router-outlet>
+    </mat-drawer>
+</mat-drawer-container>

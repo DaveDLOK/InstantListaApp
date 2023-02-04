@@ -1,0 +1,53 @@
+<p>Lets rock with my lists</p>
+<div ><!--hidden="isHidden"-->
+  <mat-form-field appearance="fill" >
+    <mat-label>Select list</mat-label>
+    <mat-select #selectList (selectionChange)="onSelectList(selectList.value)">
+      <mat-option *ngFor="let list of myLists" value={{list.id}} >{{list.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+<mat-accordion>
+    <!-- #docregion basic-panel -->
+    <!-- #docregion hide-toggle -->
+      <mat-expansion-panel [expanded]="true">
+    <!-- #enddocregion hide-toggle -->
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>{{myList.name}}</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{myList.description}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Shared with friends</p>
+        <p>Rank: {{listRank}}</p>
+        <p>Members: {{myList.views}}</p>
+        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onShareClick(myList)">
+          <mat-icon>share</mat-icon>
+        </button>
+        <p>Delete</p>
+      </mat-expansion-panel>
+    <!-- #enddocregion basic-panel -->
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+             Display elements
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <div *ngFor="let item of myList.elements"> 
+              <div>{{ item.displayOrder }}</div>
+              <div>{{ item.value }}</div>
+              <button mat-fab color="primary" aria-hidden="false" aria-label="add icon">
+                  <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onShareClick(item)">
+                  <mat-icon>share</mat-icon>
+              </button>
+              <mat-divider></mat-divider>
+          </div>
+       </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>

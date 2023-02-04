@@ -1,0 +1,60 @@
+<div class="full-page">
+<mat-drawer-container >
+    <mat-drawer-content>
+        <h2>Notifications</h2>
+        <mat-nav-list>
+            <h3>Pending for approval</h3>
+            <div *ngFor="let pendingItem of storeService.approvalNotifications$ |async"> 
+                <div class="user-container">
+                    <div class="user-image">
+                        <img  class="circular-square" src="{{pendingItem.senderUser.icon}}"/>
+                    </div>
+                    <div *ngIf="pendingItem.type!='user'">
+                        <div>
+                            <p>{{pendingItem.senderUser.userName}} has shared the {{pendingItem.type}}</p>
+                            <h4>{{pendingItem.value}}</h4>
+                        </div>
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onAddClick(pendingItem)">
+                            <mat-icon>add_task</mat-icon>
+                        </button>
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onDeletePendingItemClick(pendingItem.id)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="pendingItem.type=='user'">
+                        <div>
+                            <p>{{pendingItem.senderUser.userName}} has sent you a friend request!!</p>
+                        </div>
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onApproveFollowClick(pendingItem.senderUser)">
+                            <mat-icon>person_add</mat-icon>
+                        </button>
+                        <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onDeletePendingItemClick(pendingItem.id)" >
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+            <h3>Lastest approved</h3>
+            <div *ngFor="let element of elementsApproved"> 
+                
+                <div class="user-container">
+                    <div *ngIf="element.type!='user'">{{element.value}} has been approved on {{element.approvalDate}} from </div>
+                    <div *ngIf="element.type=='user'">Friend request approved on {{element.approvalDate}} from </div>
+                    <div class="user-image">
+                        <img  class="circular-square" src="{{element.senderUser.icon}}"/>
+                    </div>
+                    <div>{{element.senderUser.userName}}</div>
+                </div>
+            </div>
+        </mat-nav-list>
+    </mat-drawer-content>
+    <mat-drawer #rightSideNav mode="side" [opened]="rightNavOpen" position="end">
+        <router-outlet></router-outlet>
+    </mat-drawer>
+</mat-drawer-container>
+</div>
+
+

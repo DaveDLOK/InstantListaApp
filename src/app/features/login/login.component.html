@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="full-page">
+    <mat-card class="login-card">
+        <mat-card-title>
+            Login to InstantLista
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="login-field">
+                <input matInput placeholder="Email" name="email" formControlName="email"  type="email"/>
+            </mat-form-field>
+            <mat-form-field class="login-field">
+                <input matInput placeholder="Password" name="password" formControlName="password"  type="password"/>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent"
+                    class="login-button" (click)="login()" type="submit">
+                Login
+            </button>
+            <button mat-raised-button color="primary"
+                    class="signUp-button" (click)="signUp()" type="submit">
+                Sign Up
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

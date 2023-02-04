@@ -1,0 +1,39 @@
+<p>Create your favorite lists and items</p>
+
+<div class="element-type">
+    <button mat-raised-button [color]="element==selectedType?'accent':'primary'"
+            *ngFor="let element of createTypes" 
+            (click)="onSelectCreateType(element)"  value="{{element}}">{{element}}</button>
+</div>
+<div>
+  <form [formGroup]="createForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" #name matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" #description matInput ></textarea>
+    </mat-form-field>
+    <br>
+    <div *ngIf="!isList">
+      <mat-form-field appearance="fill">
+        <mat-label>Select list</mat-label>
+        <mat-select formControlName="selectList" #selectList (selectionChange)="onSelectList(selectList.value)">
+          <mat-option *ngFor="let list of myLists" value={{list.id}} >{{list.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<div>
+    <br>
+    <button mat-fab color="accent" class="login-field" (click)="createElement()" type="submit">
+      <mat-icon>add_task</mat-icon>
+    </button>
+    <button mat-fab color="primary" aria-hidden="false" aria-label="close" (click)="clearFields()">
+      <mat-icon>backspace</mat-icon>
+    </button>
+</div>

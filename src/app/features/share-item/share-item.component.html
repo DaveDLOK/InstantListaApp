@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Sharing {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Description:<br>{{data.description}}</p>
+  <p>Type: {{data.type}}</p>
+  <mat-form-field class="user-share-dropdown" >
+    <mat-label>Share with:</mat-label>
+    <input matInput #friendSearch  [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" >
+      <mat-option class="contact-option" *ngFor="let contact of friendsFiltered | async" [value]="contact.userName">
+        <div class="user-container">
+          <div class="user-image"><img class="circular-square" src="{{contact.icon}}"/></div>
+          <div>{{ contact.userName }}</div>
+        </div>
+        <mat-divider style="clear: both;"></mat-divider>
+      </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onOkClick()">Ok</button>
+</div>

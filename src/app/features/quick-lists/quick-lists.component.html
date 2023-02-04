@@ -1,0 +1,28 @@
+<form [formGroup]="myFormGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field >
+        <input matInput placeholder="List Name" name="listName" />
+    </mat-form-field>
+    <button mat-fab color="accent" (click)="addItem()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <p>Drag and drop between elements to order them as you whish.</p>
+    <mat-divider></mat-divider>
+    <div cdkDropList  (cdkDropListDropped)="drop($event)">
+        <div  *ngFor="let num of number_of_items" cdkDrag>
+               <div class="custom-placeholder" *cdkDragPlaceholder></div>
+                <div class="itemContainer" >
+                    <input matInput placeholder="Item name" type="text" formControlName="{{num}}"/>
+                </div>
+                <button mat-fab color="accent" aria-hidden="false" aria-label="add icon" (click)="onSubmit()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-fab color="accent" aria-hidden="false" aria-label="add icon" (click)="onSubmit()">
+        <mat-icon>add_task</mat-icon>
+    </button>
+    <button mat-fab color="primary" aria-hidden="false" aria-label="close" (click)="clearFields()">
+        <mat-icon>backspace</mat-icon>
+      </button>
+</form>

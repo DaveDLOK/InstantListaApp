@@ -1,0 +1,14 @@
+<h3>Following</h3>
+<mat-nav-list>
+    <div *ngFor="let user of usersFollowing"> 
+        <div class="user-container">
+            <div class="user-image">
+                <img  class="circular-square" src="{{user.icon}}"/>
+            </div>
+            <div>{{user.userName}}</div>
+            <button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="onStopFollowing(user)">
+                <mat-icon>person_remove</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-nav-list>

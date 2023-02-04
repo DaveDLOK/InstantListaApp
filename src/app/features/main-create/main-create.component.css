@@ -1,0 +1,12 @@
+.element-type {
+    display: table-cell;
+    width: 490px;
+  }
+
+  .element-type .mat-button-base {
+    margin: 8px 8px 8px 8px;
+}
+
+.mat-button-base{
+  margin: 8px 8px 8px 8px;
+}

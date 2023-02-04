@@ -1,0 +1,16 @@
+<h3>What's happening</h3>
+<button mat-fab color="primary" aria-hidden="false" aria-label="add icon" (click)="refreshFeed()">
+    <mat-icon>refresh</mat-icon>
+</button>
+<mat-nav-list class="mat-list">
+<div *ngFor="let item of feedItems"> 
+    <div *ngIf="item.elementItem.type!='user'">
+        <p>{{ item.userToShare.userName }} has subscribed to new {{item.elementItem.type}}</p>
+        <h2>{{ item.elementItem.value }}</h2>
+    </div>
+    <div *ngIf="item.elementItem.type=='user'">
+        <p><b>{{ item.userToShare.userName }}</b> is following <b>{{item.elementItem.value}}</b></p>
+    </div>
+    <mat-divider></mat-divider>
+</div>
+</mat-nav-list>

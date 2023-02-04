@@ -1,0 +1,14 @@
+.user-image{
+    float: left;
+    padding: 10px;
+}
+
+.user-container{
+    clear: both;
+}
+
+.circular-square {
+    height:80px;
+    max-width: 80px;
+    border-radius: 50%;
+}

@@ -1,0 +1,19 @@
+<div *ngIf="loaded">
+<div>Add selection to your lists, items and more</div>
+<p>{{item.value}}</p>
+<p>{{item.type}}</p>
+<div *ngIf="!isHidden">
+<mat-form-field appearance="fill" >
+  <mat-select>
+    <mat-option *ngFor="let list of myLists" value="list.id" >{{list.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<br>
+<button mat-fab color="accent" (click)="addToList()" type="submit">
+                    <mat-icon>add_task</mat-icon>
+</button>
+<button mat-fab color="primary" aria-hidden="false" aria-label="close" (click)="sideNav.toggle()">
+  <mat-icon>close</mat-icon>
+</button>
+</div>

@@ -1,0 +1,8 @@
+{
+    "debugging": false,
+    "API_ENDPOINTS": {
+        "login": "/api/login",
+        "refresh": "/api/refresh",
+        "search": "/api/search?searchString={0}&type={1}"
+    }
+}

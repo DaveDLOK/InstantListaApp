@@ -1,0 +1,19 @@
+{
+    "debugging": true,
+    "API_ENDPOINTS": {
+      "login": "/api/Authentication/login",
+      "refresh": "/api/Authentication/refresh",
+      "search": "/api/search?searchString={0}&type={1}",
+      "paginatedSearch": "/api/main-search?",
+      "myLists": "/api/my-lists",
+      "addElement": "/api/add-element",
+      "getElementDetails": "/api/get-element-details?id={0}&type={1}",
+      "getList": "/api/get-list?id={0}",
+      "getContacts": "/api/User/get-contacts?userNumber={0}",
+      "getFeed":"/api/User/get-feed?userNumber={0}",
+      "getNews":"/api/News/get-news",
+      "getPendingApprovals":"/api/User/get-pending-approvals?userNumber={0}",
+      "getApprovedElements":"/api/User/get-approved-elements?userNumber={0}",
+      "getProfileInformation":"/api/User/get-user-profile?userNumber={0}"
+    }
+}

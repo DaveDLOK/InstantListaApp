@@ -1,0 +1,12 @@
+<mat-card>
+    <div class="user-container">
+        <div class="user-image">
+            <img  class="circular-square" src="{{user.icon}}"/>
+        </div>
+        <div >{{user.userName}}</div>
+        <button mat-icon-button (click)="onPendingApprovalsIconClick()">
+            <mat-icon matBadge="{{pendigApprovalNotifications}}" matBadgeColor="warn" >notification_important</mat-icon>
+        </button>
+        <div class="clear-float"></div>
+    </div>
+</mat-card>
